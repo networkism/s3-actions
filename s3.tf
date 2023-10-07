@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "backend" {
-  bucket = "my-tf-test-bucket"
+  bucket = "bootcamp32-${var.env}-${random_integer.backend.result}"
   tags = {
     Name = "My backend"
     Environment = "dev"
@@ -28,7 +28,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
   }
 }
 
-resource "random_integer" backend {
+resource "random_integer" "backend" {
   min = 1
   max = 100
   keepers = {
